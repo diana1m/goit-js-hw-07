@@ -54,39 +54,21 @@ function onClick(evn){
         return;
     }
 
-    const originalHref = evn.target.dataset.source;
-
     const options =
-{
-    /*
-     * Prevents the lightbox from closing when clicking its background.
-     */
-    closable: true,
-    /*
-     * One or more space separated classes to be added to the basicLightbox element.
-     */
-     className: '',
-    /*
-     * Function that gets executed before the lightbox will be shown.
-     * Returning false will prevent the lightbox from showing.
-     */
-    onShow: (instance) => {
-        evn.target.src = evn.target.dataset.source;
-        console.dir(evn.target.src);
-    },
-    /*
-     * Function that gets executed before the lightbox closes.
-     * Returning false will prevent the lightbox from closing.
-     */
-    onClose: (instance) => {
-        console.log(evn.target.src);
+    {
+        closable: true,
+
+        className: '',
+        onShow: (instance) => {
+            evn.target.src = evn.target.dataset.source;
+            console.dir(evn.target.src);
+        },
+        onClose: (instance) => {}
     }
-}
-    
+
+    const originalHref = evn.target.dataset.source;
     const instance = basicLightbox.create(`<img src="${originalHref}" alt"">`, options);
     instance.show();
-
-    
 }
 
 
