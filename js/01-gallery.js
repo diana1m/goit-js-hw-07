@@ -22,6 +22,8 @@ galleryBox.insertAdjacentHTML("beforeend", markup);
 
 galleryBox.addEventListener('click', onClick);
 
+
+
 function onClick(evn){
     evn.preventDefault();
 
@@ -45,6 +47,14 @@ function onClick(evn){
     }
     const instance = basicLightbox.create(`<img src="${originalHref}" alt"">`, options);
     instance.show();
+
+    //закриття зображення
+    galleryBox.addEventListener('keydown', closeImg);
+    function closeImg(event){
+        if(event.code === "Escape"){
+            instance.close()
+        }
+    }
 }
 
 
