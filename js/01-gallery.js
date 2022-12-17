@@ -22,29 +22,29 @@ galleryBox.insertAdjacentHTML("beforeend", markup);
 
 galleryBox.addEventListener('click', onClick);
 
-const options =
-{
-    /*
-     * Prevents the lightbox from closing when clicking its background.
-     */
-    closable: true,
-    /*
-     * One or more space separated classes to be added to the basicLightbox element.
-     */
-     className: '',
-    /*
-     * Function that gets executed before the lightbox will be shown.
-     * Returning false will prevent the lightbox from showing.
-     */
-    onShow: (instance) => {
-        console.dir(instance);
-    },
-    /*
-     * Function that gets executed before the lightbox closes.
-     * Returning false will prevent the lightbox from closing.
-     */
-    onClose: (instance) => {}
-}
+// const options =
+// {
+//     /*
+//      * Prevents the lightbox from closing when clicking its background.
+//      */
+//     closable: true,
+//     /*
+//      * One or more space separated classes to be added to the basicLightbox element.
+//      */
+//      className: '',
+//     /*
+//      * Function that gets executed before the lightbox will be shown.
+//      * Returning false will prevent the lightbox from showing.
+//      */
+//     onShow: (instance) => {
+//         console.dir(instance);
+//     },
+//     /*
+//      * Function that gets executed before the lightbox closes.
+//      * Returning false will prevent the lightbox from closing.
+//      */
+//     onClose: (instance) => {}
+// }
 
 
 function onClick(evn){
@@ -54,19 +54,20 @@ function onClick(evn){
         return;
     }
 
-    const options =
-    {
-        closable: true,
-
-        className: '',
-        onShow: (instance) => {
-            evn.target.src = evn.target.dataset.source;
-            console.dir(evn.target.src);
-        },
-        onClose: (instance) => {}
-    }
-
     const originalHref = evn.target.dataset.source;
+    const previewHref = evn.target.src;
+    
+    const options ={
+        closable: true,
+        onShow: (instance) => {
+            evn.target.src = originalHref;
+            console.log(evn.target.src);
+        },
+        onClose: (instance) => {
+            evn.target.src = previewHref;
+            console.log(evn.target.src);
+        }
+    }
     const instance = basicLightbox.create(`<img src="${originalHref}" alt"">`, options);
     instance.show();
 }
