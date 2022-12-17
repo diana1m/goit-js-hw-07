@@ -22,31 +22,6 @@ galleryBox.insertAdjacentHTML("beforeend", markup);
 
 galleryBox.addEventListener('click', onClick);
 
-// const options =
-// {
-//     /*
-//      * Prevents the lightbox from closing when clicking its background.
-//      */
-//     closable: true,
-//     /*
-//      * One or more space separated classes to be added to the basicLightbox element.
-//      */
-//      className: '',
-//     /*
-//      * Function that gets executed before the lightbox will be shown.
-//      * Returning false will prevent the lightbox from showing.
-//      */
-//     onShow: (instance) => {
-//         console.dir(instance);
-//     },
-//     /*
-//      * Function that gets executed before the lightbox closes.
-//      * Returning false will prevent the lightbox from closing.
-//      */
-//     onClose: (instance) => {}
-// }
-
-
 function onClick(evn){
     evn.preventDefault();
 
